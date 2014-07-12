@@ -1,11 +1,6 @@
-import com.intellij.openapi.actionSystem.ActionGroup
-import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.DefaultActionGroup
-import com.intellij.openapi.ui.popup.JBPopupFactory
 
 import static liveplugin.PluginUtil.*
-
 
 registerAction("helloPopupAction", "ctrl alt shift P") { AnActionEvent event ->
 	def popupMenuDescription = [

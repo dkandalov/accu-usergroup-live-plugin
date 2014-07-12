@@ -1,21 +1,18 @@
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
+import com.intellij.openapi.extensions.DefaultPluginDescriptor
 import com.intellij.openapi.extensions.Extensions
-import com.intellij.openapi.extensions.PluginDescriptor
 import com.intellij.openapi.util.KeyedExtensionCollector
 import com.intellij.patterns.ElementPattern
-import com.intellij.patterns.PlatformPatterns
 import com.intellij.util.ProcessingContext
 import groovy.json.JsonSlurper
 import org.jetbrains.annotations.NotNull
 import org.picocontainer.PicoContainer
-import com.intellij.openapi.extensions.DefaultPluginDescriptor
 
-
+import static com.intellij.codeInsight.completion.CompletionType.BASIC
+import static com.intellij.patterns.PlatformPatterns.psiElement
 import static liveplugin.PluginUtil.changeGlobalVar
 import static liveplugin.PluginUtil.show
-import static com.intellij.patterns.PlatformPatterns.*
-import static com.intellij.codeInsight.completion.CompletionType.*
 
 if (isIdeStartup) return
 

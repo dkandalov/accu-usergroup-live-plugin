@@ -1,7 +1,6 @@
 import com.intellij.codeInsight.folding.impl.EditorFoldingInfo
 import com.intellij.codeInsight.folding.impl.FoldingUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.editor.Document
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.editor.FoldRegion
 import com.intellij.openapi.editor.ex.FoldingModelEx
@@ -14,7 +13,7 @@ import static liveplugin.PluginUtil.*
 // (looks better if folded text background is the same as normal text; Settings -> Editor -> Colors & Fonts)
 // (Note that it can only be executed within this plugin https://github.com/dkandalov/live-plugin)
 
-registerAction("symbolizeKeyWords", "ctrl alt shift 0") { AnActionEvent event ->
+registerAction("SymbolizeKeyWords", "ctrl alt shift 0") { AnActionEvent event ->
     def editor = currentEditorIn(event.project)
     collapseIn(editor, "(@Override\n?\\s+)\\s", { "↑" })
     collapseIn(editor, "(public\n?\\s*?)\\s", { "●" })
