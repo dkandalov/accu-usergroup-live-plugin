@@ -17,9 +17,6 @@ registerAction("helloPopupAction", "ctrl alt shift P") { AnActionEvent event ->
             ],
             "Create Toolwindow": {
                 registerToolWindow("myToolWindowId") { createPanelWithRecursiveButton() }
-            },
-            "Open Concole": {
-                execute("open ")
             }
     ]
     showPopupMenu(popupMenuDescription, popupTitle = "LSCC")

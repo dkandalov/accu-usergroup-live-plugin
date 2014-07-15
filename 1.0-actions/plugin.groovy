@@ -2,7 +2,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 
 import static liveplugin.PluginUtil.*
 
-registerAction("ReplaceCurrentWord", "ctrl alt shift R", "ToolsMenu", "Replace Current Word") { AnActionEvent event ->
+registerAction("ReplaceCurrentWord", "ctrl alt shift R") { AnActionEvent event ->
     def project = event.project
 
     def editor = currentEditorIn(project)
