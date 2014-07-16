@@ -1,16 +1,19 @@
 import com.intellij.openapi.actionSystem.AnActionEvent
 
+import static java.lang.Thread.currentThread
 import static liveplugin.PluginUtil.*
 
 registerAction("threadModel", "ctrl shift T") { AnActionEvent event ->
 
-    show("Action thread: " + Thread.currentThread())
+    show("Action thread: " + currentThread())
 
     doInBackground {
-        show("Background thread: " + Thread.currentThread())
-        show(execute("sleep", "3").stdout)
+        show(currentEditorIn(project).selectionModel.selectedText)
+
+        show("Background thread: " + currentThread())
+        Thread.sleep(3000)
         show(execute("pwd").stdout)
     }
 }
 
-show("live-plugin: " + Thread.currentThread())
+show("Loading plugin on: " + currentThread())

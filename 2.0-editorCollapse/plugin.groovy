@@ -32,8 +32,7 @@ def collapseIn(Editor editor, String regExp, Closure replacementFor) {
     def matches = findMatchesIn(editor.document.text, regExp)
 
     editor.foldingModel.runBatchFoldingOperation(new Runnable() {
-        @Override
-        public void run() {
+        @Override void run() {
             matches.each {
                 foldText(it.start, it.end, replacementFor(it.text), editor)
             }

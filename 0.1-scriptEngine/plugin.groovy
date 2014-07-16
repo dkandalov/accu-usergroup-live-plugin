@@ -5,7 +5,7 @@ import static liveplugin.PluginUtil.show
 def path = PathManager.pluginsPath + "/live-plugins/0.1-scriptEngine"
 def classLoader = new GroovyClassLoader(this.class.classLoader)
 def scriptEngine = new GroovyScriptEngine(path, classLoader)
-def someBinding = new Binding()
+def binding = new Binding()
 
-show("Evaluating")
-scriptEngine.run(path + "/someScript.groovy", someBinding)
+show("Evaluating someScript.groovy")
+scriptEngine.run(path + "/someScript.groovy", binding)

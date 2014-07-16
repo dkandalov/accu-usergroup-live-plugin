@@ -5,7 +5,8 @@ import static liveplugin.PluginUtil.*
 
 doInBackground("Looking for recursive methods") {
     runReadAction {
-        show(findRecursiveMethodsIn(project).collect{it.parent.name + "#" + it.name}.join("\n"))
+        def recurveMethodNames = findRecursiveMethodsIn(project).collect{ it.parent.name + "#" + it.name }
+        show(recurveMethodNames.join("\n"))
     }
 }
 

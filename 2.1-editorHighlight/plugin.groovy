@@ -1,5 +1,6 @@
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.editor.markup.EffectType
+import com.intellij.openapi.editor.markup.HighlighterLayer
 import com.intellij.openapi.editor.markup.HighlighterTargetArea
 import com.intellij.openapi.editor.markup.TextAttributes
 import com.intellij.psi.PsiCodeBlock
@@ -27,7 +28,7 @@ registerAction("ScopeHighlight", "ctrl shift COMMA") { AnActionEvent event ->
     editor.markupModel.addRangeHighlighter(
             fromOffset,
             toOffset,
-            layer = 1,
+            HighlighterLayer.SELECTION + 1,
             textAttributes(),
             HighlighterTargetArea.EXACT_RANGE
     )

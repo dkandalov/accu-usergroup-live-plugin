@@ -1,2 +1,2 @@
-Source code for [ACCU London meetup](http://www.meetup.com/ACCULondon/events/114469342/).
+Source code for [LSCC meetup](https://skillsmatter.com/meetups/6478-lambda-behave-writing-intellij-plugins-for-fun-and-profit).
 (The intention is to use short plugins demo instead of slides.)

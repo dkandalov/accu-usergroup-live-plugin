@@ -7,7 +7,8 @@ import javax.swing.JPanel
 import static liveplugin.PluginUtil.*
 
 registerAction("helloPopupAction", "ctrl alt shift P") { AnActionEvent event ->
-    def popupMenuDescription = [
+
+    def menuDescription = [
         "Hello LSCC": {
             show("Hello LSCC!")
         },
@@ -21,7 +22,8 @@ registerAction("helloPopupAction", "ctrl alt shift P") { AnActionEvent event ->
             }
         }
     ]
-    showPopupMenu(popupMenuDescription, popupTitle = "LSCC")
+
+    showPopupMenu(menuDescription, popupTitle = "LSCC")
 }
 
 show("Loaded 'helloPopupAction'<br/>Use ctrl+alt+shift+P to run it")

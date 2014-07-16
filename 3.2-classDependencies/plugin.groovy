@@ -23,7 +23,7 @@ registerAction("FindAllJavaClassDependencies", "alt shift D", TOOLS_MENU, "Find 
 
             def allFiles = allSourceFilesIn(project, indicator)
             def dependenciesByFile = allFiles.collectEntries { file ->
-                [file, dependenciesWithStrengh(file).findAll{ isInProject(it.key) }]
+                [file, dependenciesWithStrength(file).findAll{ isInProject(it.key) }]
             }
             def indexByFile = [allFiles, 0..<allFiles.size()].transpose().collectEntries{ it }
 
@@ -45,7 +45,7 @@ registerAction("FindAllJavaClassDependencies", "alt shift D", TOOLS_MENU, "Find 
             }.join(",\n")
             def linksJsLiteral = """"links": [\n${allFilesDependenciesJs}\n]"""
 
-            // copy-pasteable into committers-changing-same-files-graph.html
+            // copy-pasteable into class-dependencies-graph.html
             show(nodesJsLiteral + ",\n" + linksJsLiteral)
         }
     }
@@ -69,7 +69,7 @@ List<PsiFileSystemItem> allSourceFilesIn(Project project, ProgressIndicator indi
     allFiles.collect{ PsiManager.getInstance(project).findFile(it) }
 }
 
-Map<PsiFileSystemItem, Integer> dependenciesWithStrengh(PsiFileSystemItem item) {
+Map<PsiFileSystemItem, Integer> dependenciesWithStrength(PsiFileSystemItem item) {
     def dependencies = new HashMap().withDefault{ 0 }
     def addDependency = { PsiFileSystemItem psiFileItem ->
         dependencies.put(psiFileItem, dependencies.get(psiFileItem) + 1)
