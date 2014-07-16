@@ -9,9 +9,6 @@ import java.util.regex.Pattern
 
 import static liveplugin.PluginUtil.*
 
-// This is a micro-plugin to collapse Java keywords into shorter symbols.
-// (looks better if folded text background is the same as normal text; Settings -> Editor -> Colors & Fonts)
-// (Note that it can only be executed within this plugin https://github.com/dkandalov/live-plugin)
 
 registerAction("SymbolizeKeyWords", "ctrl alt shift 0") { AnActionEvent event ->
     def editor = currentEditorIn(event.project)
@@ -27,26 +24,30 @@ registerAction("SymbolizeKeyWords", "ctrl alt shift 0") { AnActionEvent event ->
     collapseIn(editor, "(\\(\\))", { "" })
     collapseIn(editor, "(!=)", { "≠" })
     collapseIn(editor, "(return)", { "↵" })
-
-    // replace "." with "->" if you really miss C++
-//    collapseIn(editor, "(\\S\\.)", { it.replace(".", "->") })
 }
 if (!isIdeStartup) show("Loaded symbolizeKeywords action. Use Ctrl+Alt+Shift+0 to run it.")
 
 
 def collapseIn(Editor editor, String regExp, Closure replacementFor) {
-    def matches = []
-    def matcher = Pattern.compile(regExp).matcher(editor.document.charsSequence)
-    while (matcher.find()) {
-        matches << [start: matcher.start(1), end: matcher.end(1), text: matcher.group(1)]
-    }
+    def matches = findMatchesIn(editor.document.text, regExp)
 
     editor.foldingModel.runBatchFoldingOperation(new Runnable() {
         @Override
         public void run() {
-            matches.each { foldText(it.start, it.end, replacementFor(it.text), editor) }
+            matches.each {
+                foldText(it.start, it.end, replacementFor(it.text), editor)
+            }
         }
     })
+}
+
+List findMatchesIn(String text, String regExp) {
+    def matches = []
+    def matcher = Pattern.compile(regExp).matcher(text)
+    while (matcher.find()) {
+        matches << [start: matcher.start(1), end: matcher.end(1), text: matcher.group(1)]
+    }
+    matches
 }
 
 /**

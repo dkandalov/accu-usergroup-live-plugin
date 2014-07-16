@@ -8,7 +8,7 @@ registerAction("threadModel", "ctrl shift T") { AnActionEvent event ->
 
     doInBackground {
         show("Background thread: " + Thread.currentThread())
-        execute("sleep", "3")
+        show(execute("sleep", "3").stdout)
         show(execute("pwd").stdout)
     }
 }
