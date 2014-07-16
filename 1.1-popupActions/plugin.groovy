@@ -8,16 +8,18 @@ import static liveplugin.PluginUtil.*
 
 registerAction("helloPopupAction", "ctrl alt shift P") { AnActionEvent event ->
     def popupMenuDescription = [
-            "Hello LSCC": {
-                show("Hello LSCC!")
-            },
-            "Hello": [
-                    "Sandro": { show("Hello Sandro!") },
-                    "Samir": { show("Hello Samir!") },
-            ],
-            "Create Toolwindow": {
-                registerToolWindow("myToolWindowId") { createPanelWithRecursiveButton() }
+        "Hello LSCC": {
+            show("Hello LSCC!")
+        },
+        "Hello": [
+                "Sandro": { show("Hello Sandro!") },
+                "Samir": { show("Where is Samir?") },
+        ],
+        "Create Toolwindow": {
+            registerToolWindow("myToolWindowId") {
+                createPanelWithRecursiveButton()
             }
+        }
     ]
     showPopupMenu(popupMenuDescription, popupTitle = "LSCC")
 }
