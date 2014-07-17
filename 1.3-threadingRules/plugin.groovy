@@ -3,14 +3,12 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import static java.lang.Thread.currentThread
 import static liveplugin.PluginUtil.*
 
-registerAction("threadModel", "ctrl shift T") { AnActionEvent event ->
+registerAction("threadingRules", "ctrl shift T") { AnActionEvent event ->
 
-    show("Action thread: " + currentThread())
+    show("Running action on: " + currentThread())
 
     doInBackground {
-        show(currentEditorIn(project).selectionModel.selectedText)
-
-        show("Background thread: " + currentThread())
+        show("Running background task on: " + currentThread())
         Thread.sleep(3000)
         show(execute("pwd").stdout)
     }
