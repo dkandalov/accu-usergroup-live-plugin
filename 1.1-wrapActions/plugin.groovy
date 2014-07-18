@@ -13,13 +13,13 @@ wrapAction("EditorTab") { AnActionEvent event, AnAction wrappedAction ->
     def offset = caretModel.offset
     def lastFourChars = document.text.substring(offset - 4, offset)
 
-    if (lastFourChars == "lscc") {
+    if (lastFourChars == "lscc-craftBeer") {
         runDocumentWriteAction(project, document) {
-            document.insertString(offset, "-complete")
-            caretModel.moveToOffset(offset + "-complete".length())
+            document.insertString(offset, "-craftBeer")
+            caretModel.moveToOffset(offset + "-craftBeer".length())
         }
     } else {
         wrappedAction.actionPerformed(event)
     }
 }
-show("Loaded tab auto-complete")
+show("Reloaded tab auto-complete")

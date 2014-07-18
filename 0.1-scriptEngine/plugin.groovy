@@ -8,4 +8,5 @@ def scriptEngine = new GroovyScriptEngine(path, classLoader)
 def binding = new Binding()
 
 show("Evaluating someScript.groovy")
+
 scriptEngine.run(path + "/someScript.groovy", binding)

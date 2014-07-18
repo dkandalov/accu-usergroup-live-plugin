@@ -6,9 +6,12 @@ import static liveplugin.PluginUtil.*
 registerAction("threadingRules", "ctrl shift T") { AnActionEvent event ->
 
     show("Running action on: " + currentThread())
+    def name = event.project.name
+    show(name)
 
     doInBackground {
-        show("Running background task on: " + currentThread())
+        show(name)
+
         Thread.sleep(3000)
         show(execute("pwd").stdout)
     }

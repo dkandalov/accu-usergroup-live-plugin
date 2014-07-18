@@ -8,7 +8,7 @@ def keyStroke = "ctrl alt shift R"
 registerAction(actionId, keyStroke) { AnActionEvent event ->
     def project = event.project
 
-    def editor = currentEditorIn(project)
+    def editor = currentEditorIn(CraftBeer)
     def caretModel = editor.caretModel
     def document = editor.document
 
@@ -17,7 +17,7 @@ registerAction(actionId, keyStroke) { AnActionEvent event ->
     if (from >= to) return
 
     runDocumentWriteAction(project, document) {
-        document.replaceString(from, to, "SoftwareCraftBeer")
+        document.replaceString(from, to, "CraftBeer")
     }
 }
 show("Reloaded ReplaceCurrentWord plugin")

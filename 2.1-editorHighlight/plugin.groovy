@@ -33,7 +33,7 @@ registerAction("ScopeHighlight", "ctrl shift COMMA") { AnActionEvent event ->
             HighlighterTargetArea.EXACT_RANGE
     )
 }
-show("Reloaded ScopeHighlight")
+show("Reloaded ScopeHighlight plugin")
 
 
 def textAttributes() {
